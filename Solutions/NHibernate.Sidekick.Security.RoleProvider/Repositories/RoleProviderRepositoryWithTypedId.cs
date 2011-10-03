@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Security;
-using NHibernate.Criterion;
-using NHibernate.Linq;
+﻿using NHibernate.Sidekick.Security.MembershipProvider.Domain;
 using NHibernate.Sidekick.Security.RoleProvider.Contracts.Repositories;
 using NHibernate.Sidekick.Security.RoleProvider.Domain;
 using SharpArch.NHibernate;
 
 namespace NHibernate.Sidekick.Security.RoleProvider.Repositories
 {
-    public class RoleProviderRepositoryWithTypedId<T, TId> : LinqRepository<T>, IRoleProviderRepositoryWithTypedId<T,TId> 
-        where T : RoleBaseWithTypedId<TId>
+    public class RoleProviderRepositoryWithTypedId<T, TId, TUser, TUserId> : LinqRepository<T>, IRoleProviderRepositoryWithTypedId<T, TId, TUser, TUserId> 
+        where T : RoleBaseWithTypedId<TId,TUser,TUserId>
+        where TUser : UserBaseWithTypedId<TUserId>
     {
     }
 }
