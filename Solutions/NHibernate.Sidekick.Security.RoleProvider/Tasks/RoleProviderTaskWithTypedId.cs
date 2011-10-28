@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using NHibernate.Sidekick.Security.MembershipProvider.Domain;
 using NHibernate.Sidekick.Security.RoleProvider.Contracts.Repositories;
 using NHibernate.Sidekick.Security.RoleProvider.Contracts.Tasks;
 using NHibernate.Sidekick.Security.RoleProvider.Domain;
 using NHibernate.Sidekick.Security.RoleProvider.Specifications;
-using SharpArch.Domain.Specifications;
 
 namespace NHibernate.Sidekick.Security.RoleProvider.Tasks
 {
@@ -72,10 +72,17 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Tasks
 
         public string[] GetRolesForUser(string username, string applicationName)
         {
-            // TODO this could be made more efficient
-            return (from role in roleProviderRepository.FindAll(new RolesByApplicationName<T, TId, TUser, TUserId>(applicationName))
-                    where role.UsersInRole.Select(x => x.Username).Contains(username)
-                    select role.RoleName).ToArray();
+            var userRoles = new List<string>();
+
+            foreach (var role in roleProviderRepository.FindAll(new RolesByApplicationName<T, TId, TUser, TUserId>(applicationName)))
+            {
+                if (role.UsersInRole.Select(x => x.Username).Contains(username))
+                {
+                    userRoles.Add(role.RoleName);
+                }
+            }
+
+            return userRoles.ToArray();
         }
     }
 }
