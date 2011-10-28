@@ -72,7 +72,10 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Tasks
 
         public string[] GetRolesForUser(string username, string applicationName)
         {
-            throw new NotImplementedException();
+            // TODO this could be made more efficient
+            return (from role in roleProviderRepository.FindAll(new RolesByApplicationName<T, TId, TUser, TUserId>(applicationName))
+                    where role.UsersInRole.Select(x => x.Username).Contains(username)
+                    select role.RoleName).ToArray();
         }
     }
 }
