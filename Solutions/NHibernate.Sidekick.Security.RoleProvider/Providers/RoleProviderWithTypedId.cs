@@ -51,6 +51,8 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Providers
             }
 
             base.Initialize(name, config);
+
+            ApplicationName = GetConfigurationValue(config["applicationName"], System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
         }
 
         public override bool IsUserInRole(string username, string roleName)
