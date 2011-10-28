@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using NHibernate.Sidekick.Security.MembershipProvider.Domain;
 using NHibernate.Sidekick.Security.RoleProvider.Contracts.Domain;
 using SharpArch.Domain.DomainModel;
@@ -7,6 +8,7 @@ using SharpArch.Domain.DomainModel;
 namespace NHibernate.Sidekick.Security.RoleProvider.Domain
 {
     [Serializable]
+    [DebuggerDisplay("{RoleName}")]
     public abstract class RoleBaseWithTypedId<TId, TUser, TUserId> : EntityWithTypedId<TId>, IRoleBaseWithTypedId<TId, TUser, TUserId>
         where TUser : UserBaseWithTypedId<TUserId>
     {
@@ -15,8 +17,8 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Domain
             UsersInRole = new List<TUser>();
         }
 
-        public string RoleName { get; set; }
-        public string ApplicationName { get; set; }
-        public IList<TUser> UsersInRole { get; set; }
+        public virtual string RoleName { get; set; }
+        public virtual string ApplicationName { get; set; }
+        public virtual IList<TUser> UsersInRole { get; set; }
     } 
 }
