@@ -7,7 +7,7 @@ using SharpArch.Domain.DomainModel;
 namespace NHibernate.Sidekick.Security.RoleProvider.Domain
 {
     [Serializable]
-    public abstract class RoleBaseWithTypedId<TId,TUser,TUserId> : EntityWithTypedId<TId>, IRoleBaseWithTypedId<TId, TUser,TUserId>
+    public abstract class RoleBaseWithTypedId<TId, TUser, TUserId> : EntityWithTypedId<TId>, IRoleBaseWithTypedId<TId, TUser, TUserId>
         where TUser : UserBaseWithTypedId<TUserId>
     {
         protected RoleBaseWithTypedId()

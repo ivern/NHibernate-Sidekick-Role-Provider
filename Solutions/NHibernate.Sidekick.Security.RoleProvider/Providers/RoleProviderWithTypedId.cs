@@ -86,10 +86,10 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Providers
             if (!RoleExists(roleName))
                 throw new ProviderException("Role does not exist.");
 
-            if (throwOnPopulatedRole && roleProviderTask.IsAnyUserInRole(roleName))
+            if (throwOnPopulatedRole && roleProviderTask.IsAnyUserInRole(roleName, ApplicationName))
                 throw new ProviderException("Cannot delete a populated role.");
 
-            roleProviderTask.Delete(roleName);
+            roleProviderTask.Delete(roleName, ApplicationName);
 
             return true;
         }
