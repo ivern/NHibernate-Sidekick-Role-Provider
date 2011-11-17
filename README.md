@@ -87,5 +87,5 @@ Third-Party Dependencies
 
 Contributors
 -------------------------
-* (Rafael E. Belliard)[https://github.com/rebelliard/]
-* (Javier Fernández-Ivern)[https://github.com/ivern/]
+* [Rafael E. Belliard](https://github.com/rebelliard/)
+* [Javier Fernández-Ivern](https://github.com/ivern/)
