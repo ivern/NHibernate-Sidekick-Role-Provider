@@ -2,6 +2,11 @@
 =================================================
 This project is an implementation of the [ASP.NET Role Provider](http://msdn.microsoft.com/en-us/library/8fw7xh74.aspx) using [NHibernate](http://nhforge.org) and [Sharp Architecture](http://www.sharparchitecture.net/).
 
+Changelog
+---------------------
+ * 1.0.0
+  - Basic methods have been implemented.
+  
 Implementation
 ---------------------
 ### 1. Create your `Role` entity
@@ -79,3 +84,8 @@ Third-Party Dependencies
 * [Fluent NHibernate 1.2.0.712](http://fluentnhibernate.org/downloads)
 * [Sharp Architecture 2.0.0.3 RC](https://github.com/sharparchitecture/Sharp-Architecture/downloads)
 * [NHibernate Sidekick's ASP.NET Membership Provider](https://github.com/rebelliard/NHibernate-Sidekick-Membership-Provider)
+
+Contributors
+-------------------------
+* (Rafael E. Belliard)[https://github.com/rebelliard/]
+* (Javier Fernández-Ivern)[https://github.com/ivern/]

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{BDEA69BB-0AEF-485E-AB7A-0F002E1069ED}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Role", "Role", "{BDEA69BB-0AEF-485E-AB7A-0F002E1069ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.Sidekick.Security.RoleProvider", "NHibernate.Sidekick.Security.RoleProvider\NHibernate.Sidekick.Security.RoleProvider.csproj", "{D9164F26-FCA0-4838-82DF-DA818352A039}"
 EndProject

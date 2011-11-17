@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NHibernate.Sidekick.Security.RoleProvider")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("﻿NHibernate Sidekick's ASP.NET Role Provider")]
+[assembly: AssemblyDescription("ASP.NET Role Provider for Sharp Architecture / NHibernate")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NHibernate.Sidekick.Security.RoleProvider")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
