@@ -83,7 +83,7 @@ Third-Party Dependencies
 * [NHibernate 3.1.0.4000](http://sourceforge.net/projects/nhibernate/files/NHibernate/)
 * [Fluent NHibernate 1.2.0.712](http://fluentnhibernate.org/downloads)
 * [Sharp Architecture 2.0.0.3 RC](https://github.com/sharparchitecture/Sharp-Architecture/downloads)
-* [NHibernate Sidekick's ASP.NET Membership Provider](https://github.com/rebelliard/NHibernate-Sidekick-Membership-Provider)
+* [NHibernate Sidekick's ASP.NET Membership Provider 0.9.2](https://github.com/rebelliard/NHibernate-Sidekick-Membership-Provider)
 
 Contributors
 -------------------------
