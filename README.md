@@ -15,7 +15,7 @@ This model assumes your `Role`'s Identifier is an integer. If this is not the ca
 This is who unobtrusively does all the work for you.
 <pre><code>public class MembershipProvider : NHibernate.Sidekick.Security.MembershipProvider.Providers.MembershipProvider&lt;User> { }
 </code></pre>
-This model assumes your `User`'s Identifier is an integer. If this is not the case, inherit from `MembershipProviderWithTypedId<T, TId>` instead.
+This model assumes your `Role`'s Identifier is an integer. If this is not the case, inherit from `MembershipProviderWithTypedId<T, TId>` instead.
 
 ### 3. Ignore `RoleBase` from Fluent NHibernate's Automap generator
 <pre><code>public class AutoPersistenceModelGenerator : SharpArch.NHibernate.FluentNHibernate.IAutoPersistenceModelGenerator
@@ -34,7 +34,7 @@ This model assumes your `User`'s Identifier is an integer. If this is not the ca
 This step is only relevant if you're using Fluent NHibernate's [Automapping mechanism](http://wiki.fluentnhibernate.org/Auto_mapping).
 
 ### 4. Implement NHibernate Sidekick's Membership Provider
-See [﻿NHibernate Sidekick's ASP.NET Membership Provider](https://github.com/rebelliard/NHibernate-Sidekick-Membership-Provider).
+See [﻿NHibernate Sidekick's ASP.NET Membership Provider](https://github.com/rebelliard/NHibernate-Sidekick-Membership-Provider). This is necessary for it to be able to read and/or manipulate roles for a given `User`.
 
 ### 5. Set your provider's configuration options
 Set this within your application's `web.config`:
