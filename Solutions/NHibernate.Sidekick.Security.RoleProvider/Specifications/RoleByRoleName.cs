@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NHibernate.Sidekick.Security.MembershipProvider.Domain;
 using NHibernate.Sidekick.Security.RoleProvider.Domain;
 
@@ -15,7 +16,7 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Specifications
 
         public override IQueryable<T> SatisfyingElementsFrom(IQueryable<T> candidates)
         {
-            return candidates.Where(x => x.ApplicationName == ApplicationName && x.RoleName == RoleName);
+            return candidates.Where(x => x.ApplicationName == ApplicationName && x.RoleName.ToLower() == RoleName);
         }
     }
 }

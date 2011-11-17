@@ -98,8 +98,7 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Providers
 
         public override bool RoleExists(string roleName)
         {
-            T role = roleProviderTask.GetRole(roleName, ApplicationName);
-            return role != null;
+            return roleProviderTask.RoleExists(roleName, ApplicationName);
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)

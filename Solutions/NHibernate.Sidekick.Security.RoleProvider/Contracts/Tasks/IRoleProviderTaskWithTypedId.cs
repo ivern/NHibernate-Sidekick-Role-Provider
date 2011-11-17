@@ -1,5 +1,4 @@
 using NHibernate.Sidekick.Security.MembershipProvider.Domain;
-using NHibernate.Sidekick.Security.RoleProvider.Domain;
 
 namespace NHibernate.Sidekick.Security.RoleProvider.Contracts.Tasks
 {
@@ -11,6 +10,7 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Contracts.Tasks
         bool IsUserInRole(string username, string roleName, string applicationName);
         string[] GetAllRoles(string applicationName);
         T GetRole(string roleName, string applicationName);
+        bool RoleExists(string roleName, string applicationName);
         string[] GetRolesForUser(string username, string applicationName);
         string[] GetUsersInRole(string roleName, string applicationName);
         void Delete(string roleName, string applicationName);

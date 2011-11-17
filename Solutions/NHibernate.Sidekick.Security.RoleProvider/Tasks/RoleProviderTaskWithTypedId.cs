@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using NHibernate.Sidekick.Security.MembershipProvider.Domain;
 using NHibernate.Sidekick.Security.RoleProvider.Contracts.Repositories;
@@ -51,6 +50,7 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Tasks
         public bool IsUserInRole(string username, string roleName, string applicationName)
         {
             T role = GetRole(roleName, applicationName);
+
             return role.UsersInRole.Where(x => x.Username == username).Count() != 0;
         }
 
@@ -70,19 +70,21 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Tasks
             return roleProviderRepository.FindOne(new RoleByRoleName<T, TId, TUser, TUserId>(applicationName, roleName));
         }
 
+        public bool RoleExists(string roleName, string applicationName)
+        {
+            return roleProviderRepository
+                       .FindAll(new RoleByRoleName<T, TId, TUser, TUserId>(applicationName, roleName))
+                       .Count() > 0;
+        }
+
         public string[] GetRolesForUser(string username, string applicationName)
         {
-            var userRoles = new List<string>();
+            string[] userRoles = roleProviderRepository.FindAll(new RolesByApplicationName<T, TId, TUser, TUserId>(applicationName))
+                    .Where(r => r.UsersInRole.Where(u => u.Username.ToLower() == username.ToLower()).Any())
+                    .Select(r => r.RoleName)
+                    .ToArray();
 
-            foreach (var role in roleProviderRepository.FindAll(new RolesByApplicationName<T, TId, TUser, TUserId>(applicationName)))
-            {
-                if (role.UsersInRole.Select(x => x.Username).Contains(username))
-                {
-                    userRoles.Add(role.RoleName);
-                }
-            }
-
-            return userRoles.ToArray();
+            return userRoles;
         }
     }
 }
