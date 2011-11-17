@@ -78,6 +78,9 @@
     <Compile Include="Providers\RoleProviderWithTypedId.cs" />
     <Compile Include="Repositories\RoleProviderRepository.cs" />
     <Compile Include="Repositories\RoleProviderRepositoryWithTypedId.cs" />
+    <Compile Include="Specifications\RoleByRoleName.cs" />
+    <Compile Include="Specifications\RolesByApplicationName.cs" />
+    <Compile Include="Specifications\RoleSpecificationBase.cs" />
     <Compile Include="Tasks\RoleProviderTask.cs" />
     <Compile Include="Tasks\RoleProviderTaskWithTypedId.cs" />
   </ItemGroup>

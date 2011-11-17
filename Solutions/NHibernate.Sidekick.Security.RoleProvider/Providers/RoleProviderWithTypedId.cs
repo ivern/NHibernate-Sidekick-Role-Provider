@@ -51,6 +51,8 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Providers
             }
 
             base.Initialize(name, config);
+
+            ApplicationName = GetConfigurationValue(config["applicationName"], System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
         }
 
         public override bool IsUserInRole(string username, string roleName)
@@ -86,10 +88,10 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Providers
             if (!RoleExists(roleName))
                 throw new ProviderException("Role does not exist.");
 
-            if (throwOnPopulatedRole && roleProviderTask.IsAnyUserInRole(roleName))
+            if (throwOnPopulatedRole && roleProviderTask.IsAnyUserInRole(roleName, ApplicationName))
                 throw new ProviderException("Cannot delete a populated role.");
 
-            roleProviderTask.Delete(roleName);
+            roleProviderTask.Delete(roleName, ApplicationName);
 
             return true;
         }
