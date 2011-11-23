@@ -140,7 +140,39 @@ namespace NHibernate.Sidekick.Security.RoleProvider.Providers
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
         {
-            throw new NotImplementedException();
+            string unexistingRole = roleNames.FirstOrDefault(roleName => !RoleExists(roleName));
+
+            if (unexistingRole != null)
+                throw new ProviderException(String.Format("Role name {0} not found.", unexistingRole));
+
+            List<T> rolesFetched = new List<T>();
+            foreach (string username in usernames)
+            {
+                if (username.Contains(","))
+                    throw new ArgumentException(String.Format("User names {0} cannot contain commas.", username));
+
+                string unassingedRole = roleNames.FirstOrDefault(roleName => !IsUserInRole(username, roleName));
+                if (unassingedRole != null)
+                    throw new ProviderException(String.Format("User {0} is not in role {1}.", username, unassingedRole));
+
+                TUser user = membershipProviderTask.Get(username, ApplicationName);
+                if (user != null)
+                {
+                    foreach (string roleName in roleNames)
+                    {
+                        T role = rolesFetched.FirstOrDefault(x => x.RoleName == roleName);
+
+                        if (role == null)
+                        {
+                            role = roleProviderTask.GetRole(roleName, ApplicationName);
+                            rolesFetched.Remove(role);
+                        }
+
+                        role.UsersInRole.Remove(user);
+                        roleProviderTask.SaveOrUpdate(role);
+                    }
+                }
+            }
         }
 
         public override string[] GetUsersInRole(string roleName)
